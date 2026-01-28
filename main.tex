@@ -1,0 +1,23 @@
+\documentclass{report}
+\input{preamble.tex} % Load preamble
+
+\begin{document}
+\input{frontpage.tex} % Insert frontpage file.
+
+\tableofcontents
+\newpage
+
+
+\pagestyle{fancy}
+\fancyfoot{} % Clear footer
+\fancyhead[R]{\sffamily\thepage} % Set page number in header
+\fancyhead[L]{{\bfseries\sffamily Chapter \theHchapter \, |} \quad {\transparent{0.6}\sffamily\rightmark}} % Set chapter name in header
+
+
+% Main content ----
+
+\chapter{Introduction}
+\input{chapters/first_file.tex}
+
+
+\end{document}
