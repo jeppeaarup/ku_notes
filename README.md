@@ -23,7 +23,6 @@ Where `box-type` is one of `definition`, `theorem`, `method`, `example`, `highli
 
 These environments can be cross-referenced using the `cleveref` package. The colorboxes add prefixes to the labels automatically (these can be customized in the preamble).
 
-```
 Futhermore, the template also includes a box for highlighting important content based on the `tcolorbox` colorbox environment. It can be used as follows:
 
 ```
