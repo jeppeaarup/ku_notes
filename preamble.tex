@@ -16,17 +16,21 @@ vmargin = {30mm, 30mm} % Top and bottom margin
 \fancyhf{} % Clear footer 
 }
 
+
 % --- Text layout ---
 \usepackage{setspace} % For setting line spacing
 \usepackage{textpos} % For text positioning
-%\usepackage{multicol} % For multiple columns
-
-%\usepackage{enumitem} % For customizing lists
-%\usepackage{caption} % For customizing captions
+\usepackage{enumitem} % For customizing lists
 
 \onehalfspacing % Set line spacing to 1.5
 \setlength{\parindent}{0pt} % No indent on new paragraphs
 
+\setlist{
+  itemsep=0pt, % Affects only space between lists and sublists
+  parsep=1pt, % Affects spacing between both items and sublists
+  topsep=0pt, % Affects top AND bottom of all lists (also between lists and sublists)
+  partopsep=5pt % Affects only space between text and list
+}
 
 % --- Fonts ---
 \usepackage[T1]{fontenc} % For font encoding
@@ -49,12 +53,14 @@ vmargin = {30mm, 30mm} % Top and bottom margin
 % Set TOC title font (uses tocloft package)
 \renewcommand{\cfttoctitlefont}{\huge\bfseries\fontencoding{T1}\sffamily\selectfont} 
 
+
 % --- Figures and floats ---
 \usepackage{graphicx} % Required for inserting images
 \usepackage{subcaption} % For subfigures
 
 \usepackage{tikz} % Required for drawing
 \usepackage{pgfplots} % Required for plotting
+
 
 % --- Table packages ---
 \usepackage{tabularx} % For customizing tables
@@ -93,6 +99,7 @@ vmargin = {30mm, 30mm} % Top and bottom margin
 
 \setcounter{tocdepth}{3} % Set TOC depth
 % ATTENTION! The TOC title setting is under "FONTS".
+
 
 % --- Color boxes ---
 \usepackage[theorems, many]{tcolorbox} % For creating colored boxes
@@ -214,6 +221,7 @@ vmargin = {30mm, 30mm} % Top and bottom margin
 
 \crefname{tcb@cnt@proof}{proof}{proofs}
 \Crefname{tcb@cnt@proof}{Proof}{Proofs}
+
 
 % --- Misc packages ---
 \usepackage[style=ddmmyyyy]{datetime2} % Generates todays date
