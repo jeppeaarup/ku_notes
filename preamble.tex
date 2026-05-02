@@ -1,83 +1,13 @@
-% --- Colors ---
-\usepackage[dvipsnames]{xcolor}
-
-
-% ---- Page layout ----
-\usepackage{geometry} % For customizing page layout
-\usepackage{fancyhdr} % Headers, footers, page number etc.
-
-\geometry{a4paper,
-hmargin = {20mm, 20mm}, % Right and left margin
-vmargin = {30mm, 30mm} % Top and bottom margin
-}
-
-\renewcommand{\headrulewidth}{0pt} % Remove header line
-\fancypagestyle{plain}{ % Redefine the plain page style
-\fancyhf{} % Clear footer 
-}
-
-
-% --- Text layout ---
-\usepackage{setspace} % For setting line spacing
-\usepackage{textpos} % For text positioning
-\usepackage{enumitem} % For customizing lists
-
-\onehalfspacing % Set line spacing to 1.5
-\setlength{\parindent}{0pt} % No indent on new paragraphs
-
-\setlist{
-  itemsep=0pt, % Affects only space between lists and sublists
-  parsep=1pt, % Affects spacing between both items and sublists
-  topsep=0pt, % Affects top AND bottom of all lists (also between lists and sublists)
-  partopsep=5pt % Affects only space between text and list
-}
-
-% --- Fonts ---
-\usepackage[T1]{fontenc} % For font encoding
-\usepackage{titlesec} % For setting fonts on titles
-\usepackage{tocloft} % For customizing TOC
-
-\usepackage{nimbussans} % Load Nimbus Sans font as default serif font.
-\usepackage{tgpagella} % Load Tex Gyre Pagella font as default sans-serif font.
-\usepackage[sc]{mathpazo} % Set math font as Pazo Math (matches Pagella font).
-\usepackage{nimbusmono} % Load Nimbus Mono font as default monospace font.
-
-% Set fonts for chapter, section, subsection, subsubsection titles
-\titleformat{\chapter}[display]{\Huge\bfseries\fontencoding{T1}\sffamily\selectfont
-}{Chapter \thechapter}{0ex}{}[] 
-\titleformat*{\section}{\Large\bfseries\fontencoding{T1}\sffamily\selectfont} 
-\titleformat*{\section}{\Large\bfseries\fontencoding{T1}\sffamily\selectfont}
-\titleformat*{\subsection}{\large\bfseries\fontencoding{T1}\sffamily\selectfont}
-\titleformat*{\subsubsection}{\normalsize\bfseries\fontencoding{T1}\sffamily\selectfont}
-
-% Set TOC title font (uses tocloft package)
-\renewcommand{\cfttoctitlefont}{\huge\bfseries\fontencoding{T1}\sffamily\selectfont} 
-
-
-% --- Figures and floats ---
-\usepackage{graphicx} % Required for inserting images
-\usepackage{subcaption} % For subfigures
-
-\usepackage{tikz} % Required for drawing
-\usepackage{pgfplots} % Required for plotting
-
-
-% --- Table packages ---
-\usepackage{tabularx} % For customizing tables
-\usepackage{booktabs} % For better table lines
-
-\pgfplotsset{compat=1.18} % Set pgfplots compatibility
-
+\input{settings/colors.tex}
+\input{settings/layout.tex}
+\input{settings/fonts.tex}
+\input{settings/figures_tables.tex}
 
 % --- Math ---
 \usepackage{amsmath} % For math stuff
-\usepackage{amstext} % For text in math mode
-\usepackage{amsfonts} % For math fonts
 \usepackage{amssymb} % For math symbols
-%\usepackage{amsthm} % For theorem styles - commented out to avoid conflict with tcolorbox theorems
 \usepackage{nicematrix} % For creating nice matrices
 \usepackage{bm} % For bold math symbols
-
 
 % --- Citing and referencing ---
 \usepackage{biblatex} % For bibliography
@@ -97,141 +27,10 @@ vmargin = {30mm, 30mm} % Top and bottom margin
 
 \urlstyle{same} % Set the URL-font to the same as the rest of the document
 
-\setcounter{tocdepth}{3} % Set TOC depth
-% ATTENTION! The TOC title setting is under "FONTS".
-
-
-% --- Color boxes ---
-\usepackage[theorems, many]{tcolorbox} % For creating colored boxes
-
-% Use:
-% \begin{thm}{Title}{thm:label}
-% Content
-% \end{thm}
-
-% Define colors for boxes
-\definecolor{lightgrey}{RGB}{247, 247, 247}
-
-\definecolor{darkgreen}{RGB}{0,154,84}
-\definecolor{lightgreen}{RGB}{238,247,244}
-
-\definecolor{darkblue}{RGB}{41, 82, 163}
-
-\definecolor{brightgreen}{RGB}{50, 140, 93} 
-\definecolor{brightorange}{RGB}{240, 135, 0} 
-
-\definecolor{darkred}{RGB}{255, 15, 15}
-\colorlet{whitered}{red!10!white}
-
-% Define global box styles
-\tcbset{
-    framedboxstyle/.style={
-    fonttitle=\bfseries, % Title font
-    coltitle=black, % Title color
-    toptitle=3mm, % Top title padding
-    bottomtitle=-0.5mm, % Bottom title padding
-    separator sign = \quad, % Seperator between label and title
-    colbacktitle=lightgrey, % Title background color
-    colback=lightgrey, % Background color
-    boxrule=1pt, % Frame width
-    titlerule=0pt, % No line under title
-    sharp corners, % No rounded corners
-    enhanced jigsaw, % Better frame drawing
-    },
-    leftruleboxstyle/.style={
-    fonttitle=\bfseries, % Title font
-    coltitle=black, % Title color
-    toptitle=3mm, % Top title padding
-    bottomtitle=-0.5mm, % Bottom title padding
-    separator sign = \quad, % Seperator between label and title
-    colbacktitle=lightgrey, % Title background color
-    colback=lightgrey, % Background color
-    boxrule=0pt, % Frame width
-    titlerule=0pt, % No line under title
-    frame empty, % No frame
-    sharp corners, % No rounded corners
-    enhanced jigsaw, % Better frame drawing
-    },
-    leftrule color/.style={ % For setting color of left rule
-        borderline west={3pt}{0pt}{#1}
-    }
-}
-
-% Definition environment
-\newtcbtheorem[number within=chapter]{definition}{Definition}{
-    framedboxstyle,
-    colframe=darkgreen,
-}{def}
-
-% Theorem environment
-\newtcbtheorem[number within=chapter]{theorem}{Theorem}{
-    framedboxstyle,
-    colframe=darkblue,
-}{thm}
-
-% Method environment
-\newtcbtheorem[number within=chapter]{method}{Method}{
-    framedboxstyle,
-    colframe=black,
-}{mth}
-
-% Example environment
-\newtcbtheorem[number within=chapter]{example}{Example}{
-    leftruleboxstyle,
-    leftrule color=brightorange
-}{exa}
-
-% Box environment
-\newtcbtheorem[number within=chapter]{highlight}{Box}{
-    leftruleboxstyle,
-    leftrule color=darkgreen
-}{box}
-
-% Proof environment
-\newtcbtheorem[number within=chapter]{proof}{Proof}{
-    leftruleboxstyle,
-    leftrule color=black
-}{prf}
-
-% Important environment
-\newtcolorbox[]{important}{
-    colback=whitered, % Background color
-    colframe=darkred, % Frame color
-    borderline west={4pt}{0pt}{darkred}, % Left border
-    boxrule=0pt, % Frame width
-    sharp corners, % No rounded corners
-    enhanced jigsaw, % Better frame drawing
-}
-
-% Cleveref setup for colorboxes ----
-\crefname{tcb@cnt@definition}{definition}{definitions}
-\Crefname{tcb@cnt@definition}{Definition}{Definitions}
-
-\crefname{tcb@cnt@theorem}{theorem}{theorems}
-\Crefname{tcb@cnt@theorem}{Theorem}{Theorems}
-
-\crefname{tcb@cnt@method}{method}{methods}
-\Crefname{tcb@cnt@method}{Method}{Methods}
-
-\crefname{tcb@cnt@example}{example}{examples}
-\Crefname{tcb@cnt@example}{Example}{Examples}
-
-\crefname{tcb@cnt@highlight}{box}{boxes}
-\Crefname{tcb@cnt@highlight}{Box}{Boxes}
-
-\crefname{tcb@cnt@proof}{proof}{proofs}
-\Crefname{tcb@cnt@proof}{Proof}{Proofs}
-
+% --- Color boxes --- 
+\input{settings/boxes.tex} % Needs to come after hyperref
 
 % --- Misc packages ---
 \usepackage[style=ddmmyyyy]{datetime2} % Generates todays date
-\usepackage{listings} % For code blocks
 \usepackage{lipsum} % Generates lorem ipsum tex
 \usepackage{transparent} % For transparent text effects
-
-\lstset{
-    basicstyle=\ttfamily\small,
-    breaklines=true,
-    columns=flexible,
-    keepspaces=true
-}

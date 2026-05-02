@@ -1,29 +1,55 @@
+% Front page inputs 
+\newcommand{\thetitle}{Title}
+\newcommand{\thesubtitle}{Subtitle}
+\newcommand{\thecourseid}{Course ID}
+\newcommand{\theauthor}{Author}
+\newcommand{\thesubauthor}{MSc student at University of Copenhagen}
+
+\definecolor{textgrey}{RGB}{100,100,100} % Color of grey text
+\definecolor{accentcolor}{HTML}{0072B2} % Accent color 
+
 \begin{titlepage}
+    \hyphenpenalty=10000 
+    \setstretch{2.5}
 
-\TPGrid{12}{24}
+    \begin{tikzpicture}[remember picture, overlay]
 
-\begin{textblock}{9.4}(0,10)
-    \LARGE{\sffamily\bfseries{Course code}}
-\end{textblock}
+        % Vertical accent bar on left edge
+        \fill[accentcolor]
+            (current page.south west) rectangle
+            ([xshift=0.6cm] current page.north west);
 
-\begin{textblock}{9.4}(0,11)
-    \Huge{\sffamily\bfseries{Course title}}
-\end{textblock}
+        % Horizontal rule
+        \coordinate (rule) at ([xshift=2cm, yshift=10.6cm] current page.south west);
+        \draw[accentcolor, line width=0.5pt]
+            (rule) -- ([xshift=-2cm] current page.east |- rule);
 
-\begin{textblock}{9.4}(0,12)
-    \LARGE{\sffamily\bfseries{Course notes \& formulas}}
-\end{textblock}
+        % Title block
+        \node[anchor=south west, align=left, text width=14cm] (subtitle)
+            at ([yshift=1cm] rule.west)
+            {\LARGE\sffamily\vphantom{g}\thesubtitle};
 
-\begin{textblock}{9.4}(0,14)
-    \large{\sffamily\bfseries{Author name, Student ID}}
-\end{textblock}
+        \node[anchor=south west, align=left, text width=14cm] (title)
+            at ([yshift=0.1cm] subtitle.north west)
+            {\Huge\sffamily\bfseries\vphantom{g}\thetitle};
 
-\begin{textblock}{9.4}(0,14.5)
-    \large{\sffamily{MSc student at University of Copenhagen}}
-\end{textblock}
+        \node[anchor=south west, align=left, text width=14cm] (courseid)
+            at ([yshift=0.25cm] title.north west)
+            {\large\sffamily\textcolor{textgrey}{\thecourseid}};
 
-\begin{textblock}{9.4}(0,15.3)
-    \large{\sffamily{Last updated: \today}}
-\end{textblock}
+        % Author block
+        \node[anchor=north west] (author)
+            at ([yshift=-0.45cm] rule.west)
+            {\large\sffamily\bfseries\theauthor};
 
+        \node[anchor=north west]
+            at (author.south west)
+            {\large\sffamily\thesubauthor};
+
+        % Footer
+        \node[anchor=west]
+            at ([xshift=2cm, yshift=2cm] current page.south west)
+            {\large\sffamily Last updated: \DTMtoday};
+
+    \end{tikzpicture}
 \end{titlepage}

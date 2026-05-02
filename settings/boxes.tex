@@ -1,0 +1,108 @@
+% --- Color boxes ---
+\usepackage[theorems, many]{tcolorbox} % For creating colored boxes
+
+% Use:
+% \begin{thm}{Title}{thm:label}
+% Content
+% \end{thm}
+
+
+
+% Define global box styles
+\tcbset{
+    framedboxstyle/.style={
+    fonttitle=\bfseries, % Title font
+    coltitle=black, % Title color
+    toptitle=3mm, % Top title padding
+    bottomtitle=-0.5mm, % Bottom title padding
+    separator sign = \quad, % Seperator between label and title
+    colbacktitle=lightgrey, % Title background color
+    colback=lightgrey, % Background color
+    boxrule=1pt, % Frame width
+    titlerule=0pt, % No line under title
+    sharp corners, % No rounded corners
+    enhanced jigsaw, % Better frame drawing
+    },
+    leftruleboxstyle/.style={
+    fonttitle=\bfseries, % Title font
+    coltitle=black, % Title color
+    toptitle=3mm, % Top title padding
+    bottomtitle=-0.5mm, % Bottom title padding
+    separator sign = \quad, % Seperator between label and title
+    colbacktitle=lightgrey, % Title background color
+    colback=lightgrey, % Background color
+    boxrule=0pt, % Frame width
+    titlerule=0pt, % No line under title
+    frame empty, % No frame
+    sharp corners, % No rounded corners
+    enhanced jigsaw, % Better frame drawing
+    },
+    leftrule color/.style={ % For setting color of left rule
+        borderline west={3pt}{0pt}{#1}
+    }
+}
+
+% Definition environment
+\newtcbtheorem[number within=chapter]{definition}{Definition}{
+    framedboxstyle,
+    colframe=darkgreen,
+}{def}
+
+% Theorem environment
+\newtcbtheorem[number within=chapter]{theorem}{Theorem}{
+    framedboxstyle,
+    colframe=darkblue,
+}{thm}
+
+% Method environment
+\newtcbtheorem[number within=chapter]{method}{Method}{
+    framedboxstyle,
+    colframe=black,
+}{mth}
+
+% Example environment
+\newtcbtheorem[number within=chapter]{example}{Example}{
+    leftruleboxstyle,
+    leftrule color=brightorange
+}{exa}
+
+% Box environment
+\newtcbtheorem[number within=chapter]{highlight}{Box}{
+    leftruleboxstyle,
+    leftrule color=darkgreen
+}{box}
+
+% Proof environment
+\newtcbtheorem[number within=chapter]{proof}{Proof}{
+    leftruleboxstyle,
+    leftrule color=black
+}{prf}
+
+% Important environment
+\newtcolorbox[]{important}{
+    colback=whitered, % Background color
+    colframe=darkred, % Frame color
+    borderline west={4pt}{0pt}{darkred}, % Left border
+    boxrule=0pt, % Frame width
+    sharp corners, % No rounded corners
+    enhanced jigsaw, % Better frame drawing
+}
+
+% Cleveref setup for colorboxes ----
+\crefname{tcb@cnt@definition}{definition}{definitions}
+\Crefname{tcb@cnt@definition}{Definition}{Definitions}
+
+\crefname{tcb@cnt@theorem}{theorem}{theorems}
+\Crefname{tcb@cnt@theorem}{Theorem}{Theorems}
+
+\crefname{tcb@cnt@method}{method}{methods}
+\Crefname{tcb@cnt@method}{Method}{Methods}
+
+\crefname{tcb@cnt@example}{example}{examples}
+\Crefname{tcb@cnt@example}{Example}{Examples}
+
+\crefname{tcb@cnt@highlight}{box}{boxes}
+\Crefname{tcb@cnt@highlight}{Box}{Boxes}
+
+\crefname{tcb@cnt@proof}{proof}{proofs}
+\Crefname{tcb@cnt@proof}{Proof}{Proofs}

@@ -1,0 +1,32 @@
+% --- Figures and floats ---
+\usepackage{graphicx} % Required for inserting images
+\usepackage{subcaption} % For subfigures
+\usepackage{tikz} % Required for drawing
+\usepackage{pgfplots} % Required for plotting
+
+% pgfplot global style
+\pgfplotsset{
+    compat=newest,
+    every axis/.style={
+        thick,
+        xlabel style={font=\normalsize},
+        ylabel style={font=\normalsize},
+        tick label style={font=\small},
+        legend style={font=\normalsize},
+        axis lines=left,
+        cycle list name=OkabeIto,
+    },
+}
+
+\pgfplotscreateplotcyclelist{OkabeIto}{
+    {OkabeDarkBlue, thick},
+    {OkabeRed, thick},
+    {OkabeGreen, thick},
+    {OkabePurple, thick},
+    {OkabeOrange, thick},
+    {OkabeBlue, thick}
+}
+
+% --- Table packages ---
+\usepackage{tabularx} % For customizing tables
+\usepackage{booktabs} % For better table lines

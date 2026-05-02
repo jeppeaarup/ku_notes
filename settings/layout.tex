@@ -1,0 +1,37 @@
+% ---- Page layout ----
+\usepackage{geometry} % For customizing page layout
+\usepackage{fancyhdr} % Headers, footers, page number etc.
+
+\geometry{a4paper,
+hmargin = {20mm, 20mm}, % Right and left margin
+vmargin = {30mm, 30mm} % Top and bottom margin
+}
+
+% Header and footer setup ----
+\renewcommand{\headrulewidth}{0pt} % Remove header line
+\fancypagestyle{plain}{ % Redefine the plain page style
+\fancyhf{} % Clear footer 
+}
+
+\pagestyle{fancy}
+\fancyfoot{} % Clear footer
+\fancyhead[R]{\sffamily\thepage} % Set page number in header
+\fancyhead[L]{{\bfseries\sffamily Chapter \thechapter \, |} \quad {\transparent{0.6}\sffamily\rightmark}} % Set chapter name in header
+
+% --- Text layout ---
+\usepackage{setspace} % For setting line spacing
+\usepackage{textpos} % For text positioning
+\usepackage{enumitem} % For customizing lists
+
+\onehalfspacing % Set line spacing to 1.5
+\setlength{\parindent}{0pt} % No indent on new paragraphs
+
+\setlist{
+  itemsep=0pt, % Affects only space between lists and sublists
+  parsep=1pt, % Affects spacing between both items and sublists
+  topsep=0pt, % Affects top AND bottom of all lists (also between lists and sublists)
+  partopsep=5pt % Affects only space between text and list
+}
+
+% --- Others ---
+\setcounter{tocdepth}{3} % Set TOC depth
