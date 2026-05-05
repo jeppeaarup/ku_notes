@@ -1,94 +1,93 @@
 % --- Color boxes ---
-\usepackage[theorems, many]{tcolorbox} % For creating colored boxes
+\usepackage[theorems, many]{tcolorbox}
 
-% Use:
-% \begin{thm}{Title}{thm:label}
-% Content
-% \end{thm}
+\ifthenelse{\boolean{usechapters}}{
+    \newcommand{\counterparent}{chapter}
+}{
+    \newcommand{\counterparent}{section}
+}
 
-
-
-% Define global box styles
+% Define box styles ---
 \tcbset{
     framedboxstyle/.style={
-    fonttitle=\bfseries, % Title font
-    coltitle=black, % Title color
-    toptitle=3mm, % Top title padding
-    bottomtitle=-0.5mm, % Bottom title padding
-    separator sign = \quad, % Seperator between label and title
-    colbacktitle=lightgrey, % Title background color
-    colback=lightgrey, % Background color
-    boxrule=1pt, % Frame width
-    titlerule=0pt, % No line under title
-    sharp corners, % No rounded corners
-    enhanced jigsaw, % Better frame drawing
+        fonttitle=\bfseries,
+        coltitle=black,
+        toptitle=3mm,
+        bottomtitle=-0.5mm,
+        separator sign = \quad,
+        colbacktitle=lightgrey,
+        colback=lightgrey,
+        boxrule=1pt,
+        titlerule=0pt,
+        sharp corners,
+        enhanced jigsaw,
     },
     leftruleboxstyle/.style={
-    fonttitle=\bfseries, % Title font
-    coltitle=black, % Title color
-    toptitle=3mm, % Top title padding
-    bottomtitle=-0.5mm, % Bottom title padding
-    separator sign = \quad, % Seperator between label and title
-    colbacktitle=lightgrey, % Title background color
-    colback=lightgrey, % Background color
-    boxrule=0pt, % Frame width
-    titlerule=0pt, % No line under title
-    frame empty, % No frame
-    sharp corners, % No rounded corners
-    enhanced jigsaw, % Better frame drawing
+        fonttitle=\bfseries,
+        coltitle=black,
+        toptitle=3mm,
+        bottomtitle=-0.5mm,
+        separator sign = \quad,
+        colbacktitle=lightgrey,
+        colback=lightgrey,
+        boxrule=0pt,
+        titlerule=0pt,
+        frame empty,
+        sharp corners,
+        enhanced jigsaw,
     },
-    leftrule color/.style={ % For setting color of left rule
+    leftrule color/.style={
         borderline west={3pt}{0pt}{#1}
     }
 }
 
 % Definition environment
-\newtcbtheorem[number within=chapter]{definition}{Definition}{
+\newtcbtheorem[number within=\counterparent]{definition}{Definition}{
     framedboxstyle,
     colframe=darkgreen,
 }{def}
 
 % Theorem environment
-\newtcbtheorem[number within=chapter]{theorem}{Theorem}{
+\newtcbtheorem[number within=\counterparent]{theorem}{Theorem}{
     framedboxstyle,
     colframe=darkblue,
 }{thm}
 
 % Method environment
-\newtcbtheorem[number within=chapter]{method}{Method}{
+\newtcbtheorem[number within=\counterparent]{method}{Method}{
     framedboxstyle,
     colframe=black,
 }{mth}
 
 % Example environment
-\newtcbtheorem[number within=chapter]{example}{Example}{
+\newtcbtheorem[number within=\counterparent]{example}{Example}{
     leftruleboxstyle,
     leftrule color=brightorange
 }{exa}
 
 % Box environment
-\newtcbtheorem[number within=chapter]{highlight}{Box}{
+\newtcbtheorem[number within=\counterparent]{highlight}{Box}{
     leftruleboxstyle,
     leftrule color=darkgreen
 }{box}
 
 % Proof environment
-\newtcbtheorem[number within=chapter]{proof}{Proof}{
+\newtcbtheorem[number within=\counterparent]{proof}{Proof}{
     leftruleboxstyle,
     leftrule color=black
 }{prf}
 
 % Important environment
 \newtcolorbox[]{important}{
-    colback=whitered, % Background color
-    colframe=darkred, % Frame color
-    borderline west={4pt}{0pt}{darkred}, % Left border
-    boxrule=0pt, % Frame width
-    sharp corners, % No rounded corners
-    enhanced jigsaw, % Better frame drawing
+    colback=whitered,
+    colframe=darkred,
+    borderline west={4pt}{0pt}{darkred},
+    boxrule=0pt,
+    sharp corners,
+    enhanced jigsaw,
 }
 
-% Cleveref setup for colorboxes ----
+% Cleveref setup for colorboxes ---
 \crefname{tcb@cnt@definition}{definition}{definitions}
 \Crefname{tcb@cnt@definition}{Definition}{Definitions}
 

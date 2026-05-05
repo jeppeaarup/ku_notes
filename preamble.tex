@@ -1,3 +1,10 @@
+% --- Flags used for conditional compilation ---
+\usepackage{ifthen} % For if-then-else logic in LaTeX
+\newboolean{usechapters}
+
+\setboolean{usechapters}{false} % true = use chapters instead of sections in counters, headers etc. (if the class supports it)
+
+% --- Settings in external files ---
 \input{settings/colors.tex}
 \input{settings/layout.tex}
 \input{settings/fonts.tex}

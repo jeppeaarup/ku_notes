@@ -1,19 +1,19 @@
 % --- Fonts ---
 \usepackage[T1]{fontenc} % For font encoding
 \usepackage{titlesec} % For setting fonts on titles
-\usepackage{tocloft} % For customizing TOC
 
 \usepackage{nimbussans} % Load Nimbus Sans font as default serif font.
 \usepackage{tgpagella} % Load Tex Gyre Pagella font as default sans-serif font.
 \usepackage[sc]{mathpazo} % Set math font as Pazo Math (matches Pagella font).
 \usepackage{nimbusmono} % Load Nimbus Mono font as default monospace font.
 
-% Set fonts for chapter, section, subsection, subsubsection titles
+% Set fonts for chapter, section, subsection, subsubsection titles ---
 \titleformat{\chapter}[display]{\Huge\bfseries\fontencoding{T1}\sffamily\selectfont
 }{Chapter \thechapter}{0ex}{}[] 
 \titleformat*{\section}{\Large\bfseries\fontencoding{T1}\sffamily\selectfont} 
 \titleformat*{\subsection}{\large\bfseries\fontencoding{T1}\sffamily\selectfont}
 \titleformat*{\subsubsection}{\normalsize\bfseries\fontencoding{T1}\sffamily\selectfont}
 
-% Set TOC title font (uses tocloft package)
-\renewcommand{\cfttoctitlefont}{\huge\bfseries\fontencoding{T1}\sffamily\selectfont} 
+% Set TOC title font (uses tocloft package) ---
+\usepackage{tocloft} % For customizing TOC 
+\renewcommand{\cfttoctitlefont}{\huge\bfseries\fontencoding{T1}\sffamily\selectfont}

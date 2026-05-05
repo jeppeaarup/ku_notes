@@ -1,4 +1,4 @@
-% ---- Page layout ----
+% --- Page layout ---
 \usepackage{geometry} % For customizing page layout
 \usepackage{fancyhdr} % Headers, footers, page number etc.
 
@@ -7,16 +7,20 @@ hmargin = {20mm, 20mm}, % Right and left margin
 vmargin = {30mm, 30mm} % Top and bottom margin
 }
 
-% Header and footer setup ----
-\renewcommand{\headrulewidth}{0pt} % Remove header line
-\fancypagestyle{plain}{ % Redefine the plain page style
-\fancyhf{} % Clear footer 
+% Header and footer setup ---
+\renewcommand{\headrulewidth}{0pt}
+\fancypagestyle{plain}{
+    \fancyhf{}
 }
 
 \pagestyle{fancy}
-\fancyfoot{} % Clear footer
-\fancyhead[R]{\sffamily\thepage} % Set page number in header
-\fancyhead[L]{{\bfseries\sffamily Chapter \thechapter \, |} \quad {\transparent{0.6}\sffamily\rightmark}} % Set chapter name in header
+\fancyfoot{}
+\fancyhead[R]{\sffamily\thepage}
+\ifthenelse{\boolean{usechapters}}{
+    \fancyhead[L]{{\bfseries\sffamily Chapter \thechapter \, |} \quad {\transparent{0.6}\sffamily\rightmark}}
+}{
+    \fancyhead[L]{{\transparent{0.6}\sffamily\leftmark}}
+}
 
 % --- Text layout ---
 \usepackage{setspace} % For setting line spacing
@@ -33,5 +37,5 @@ vmargin = {30mm, 30mm} % Top and bottom margin
   partopsep=5pt % Affects only space between text and list
 }
 
-% --- Others ---
+% --- Other layout settings ---
 \setcounter{tocdepth}{3} % Set TOC depth
